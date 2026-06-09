@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: module01-actuator
+  datasource:
+    url: jdbc:mysql://localhost:3306/popular_shop
+    username: wanted
+    password: wanted
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+  sql:
+    init:
+      mode: always # application을 run 하면 자동으로 data.sql, schema.sql 실행됨
+
+logging:
+  level:
+    root: info
+
+# 엑츄에이터는 HTTP 를 통해 APP 운영 정보를 제공한다
+# 개발 과정에선 모든 엔드포인트를 공개할 수 있지만
+# 추후 운영 환경에서는 APP 민감 정보들이 노출될 수 있기 때문에
+# 노출 시킬 EndPoint를 정의한다
+management:
+  endpoints:
+    web:
+      exposure:
+        # shop은 커스텀 엔드포인트
+        # prometheus 는 build.gradle 에 추가한 프로메테우스 구현체 결과를 확인할 수 있는 엔드포인트이다.
+        include: health, info, metrics, shop, prometheus
