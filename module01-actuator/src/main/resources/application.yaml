@@ -28,3 +28,9 @@ management:
         # shop은 커스텀 엔드포인트
         # prometheus 는 build.gradle 에 추가한 프로메테우스 구현체 결과를 확인할 수 있는 엔드포인트이다.
         include: health, info, metrics, shop, prometheus
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+    tags:
+      application: ${spring.application.name}

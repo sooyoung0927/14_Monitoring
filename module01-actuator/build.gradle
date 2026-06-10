@@ -37,6 +37,8 @@ dependencies {
     *   Application 에서 발생하는 메트릭들을 프로메테우스 형식에 맞게 변환해주는 구현체
     *   프로메테우스는 어플리케이션에서 발생한 메드릭을 수집하는 데이터베이스라고 생각하면 된다 */
     runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+
+    implementation 'com.github.loki4j:loki-logback-appender:1.5.2'
 }
 
 tasks.named('test') {
